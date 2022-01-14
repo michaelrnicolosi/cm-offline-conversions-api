@@ -11,7 +11,7 @@ import time
 def upload_conversions(request):
 
     secret_client = secretmanager.SecretManagerServiceClient()
-    secret_name = f"projects/503799238397/secrets/offline-conversions/versions/1"
+    secret_name = f"projects/<PROJECT-CODE>/secrets/offline-conversions/versions/1"
     secret_response = secret_client.access_secret_version(request={"name": secret_name})
     payload = secret_response.payload.data.decode("UTF-8")
     json_payload = json.loads(payload)
